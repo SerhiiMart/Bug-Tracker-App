@@ -1,3 +1,5 @@
+import {BUG_ADDED, BUG_REMOVE} from './actionTypes';
+
 let lastId = 0;
 export default function reducer(state = [], action) {
   switch (action.type){
