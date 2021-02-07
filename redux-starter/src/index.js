@@ -1,26 +1,18 @@
+  
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app';
 import store from './store';
-import Store from './store';
+import {bugAdded, bugResolved} from './actions'
 
 
-const unsubscribe = store.subscribe (()=> {
-  console.log('Store Changed!', getState());
-});
+store.dispatch(bugAdded("Bug 1"))
+store.dispatch(bugResolved(1))
+console.log(store.getState());
 
-Store.dispatch({
-  type: "bugAdded",
-  payload: {
-    description: "Bug1"
-  }
-});
-
-unsubscribe();
-
-Store.dispatch({
-  type: "bugRemoved",
-  payload: {
-    id: 1
-  }
-});
-
-
-console.log(Store.getState());
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
